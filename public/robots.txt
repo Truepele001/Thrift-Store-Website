@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.bricklabsai.com
+
+# Sitemaps
+Sitemap: https://www.bricklabsai.com/sitemap.xml
