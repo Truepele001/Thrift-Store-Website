@@ -30,18 +30,18 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, o
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
-      <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
+      <div className="absolute inset-0 bg-black bg-opacity-75" onClick={onClose}></div>
       
-      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl backdrop-blur-sm">
+      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl">
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-            <h2 className="text-xl font-bold">
+          <div className="flex items-center justify-between p-6 border-b bg-black text-white">
+            <h2 className="text-xl font-bold uppercase tracking-wide">
               Shopping Cart ({itemCount})
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition-all duration-200"
+              className="p-2 hover:bg-gray-800 rounded-full transition-all duration-200"
             >
               <X className="h-5 w-5" />
             </button>
@@ -59,7 +59,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, o
                 <p className="text-gray-600 text-xl mb-6">Your cart is empty</p>
                 <button
                   onClick={onClose}
-                  className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 uppercase tracking-wide"
                 >
                   Continue Shopping
                 </button>
@@ -67,24 +67,24 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, o
             ) : (
               <div className="space-y-4">
                 {items.map((item) => (
-                  <div key={item.id} className="flex space-x-4 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                  <div key={item.id} className="flex space-x-4 p-6 bg-white rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-20 h-20 object-cover rounded-xl"
+                      className="w-20 h-20 object-cover rounded-xl grayscale"
                     />
                     
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-800">{item.name}</h3>
+                      <h3 className="font-semibold text-black uppercase tracking-wide">{item.name}</h3>
                       {item.size && (
-                        <p className="text-sm text-gray-500 mt-1">Size: {item.size}</p>
+                        <p className="text-sm text-gray-500 mt-1 uppercase">Size: {item.size}</p>
                       )}
-                      <p className="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">
+                      <p className="text-lg font-bold text-black mt-2">
                         {formatPrice(item.price)}
                       </p>
                       
                       <div className="flex items-center justify-between mt-4">
-                        <div className="flex items-center space-x-3 bg-gray-100 rounded-xl p-2">
+                        <div className="flex items-center space-x-3 bg-gray-200 rounded-xl p-2">
                           <button
                             onClick={() => onUpdateQuantity(item.id, Math.max(0, item.quantity - 1))}
                             className="p-2 hover:bg-white rounded-lg transition-colors"
@@ -104,7 +104,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, o
                         
                         <button
                           onClick={() => onRemoveItem(item.id)}
-                          className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                          className="p-2 text-black hover:bg-gray-200 rounded-lg transition-colors"
                         >
                           <Trash2 className="h-5 w-5" />
                         </button>
@@ -120,26 +120,26 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, o
           {items.length > 0 && (
             <div className="border-t bg-white p-6 space-y-6">
               <div className="flex justify-between items-center">
-                <span className="text-xl font-semibold">Total:</span>
-                <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-xl font-semibold uppercase tracking-wide">Total:</span>
+                <span className="text-2xl font-bold text-black">
                   {formatPrice(total)}
                 </span>
               </div>
               
               <div className="space-y-3">
-                <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                <button className="w-full bg-black hover:bg-gray-800 text-white py-4 rounded-xl font-bold transition-all duration-300 uppercase tracking-wide">
                   Proceed to Checkout
                 </button>
                 <button
                   onClick={onClose}
-                  className="w-full border-2 border-gray-200 text-gray-700 py-4 rounded-xl font-semibold hover:bg-gray-50 hover:border-indigo-200 transition-all duration-300"
+                  className="w-full border-2 border-gray-300 text-black py-4 rounded-xl font-semibold hover:bg-gray-100 hover:border-black transition-all duration-300 uppercase tracking-wide"
                 >
                   Continue Shopping
                 </button>
               </div>
               
               <div className="text-center text-gray-500">
-                <p className="bg-gray-50 py-2 px-4 rounded-lg">M-Pesa and card payments accepted</p>
+                <p className="bg-gray-100 py-2 px-4 rounded-lg text-sm uppercase tracking-wide">M-Pesa and card payments accepted</p>
               </div>
             </div>
           )}

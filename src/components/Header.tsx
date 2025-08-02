@@ -142,29 +142,29 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
   ];
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-white shadow-2xl sticky top-0 z-50 border-b border-gray-100">
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white py-2">
+      <div className="bg-black text-white py-3 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-2 text-sm">
             <Phone className="h-4 w-4" />
-            <span>+254 743 411 318</span>
+            <span className="font-medium">+254 743 411 318</span>
           </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="flex space-x-2">
-              <div className="w-6 h-6 bg-blue-500 hover:bg-blue-400 rounded-full flex items-center justify-center transition-colors duration-200 cursor-pointer shadow-lg">
-                <span className="text-white text-xs font-bold">f</span>
-              </div>
-              <div className="w-6 h-6 bg-cyan-500 hover:bg-cyan-400 rounded-full flex items-center justify-center transition-colors duration-200 cursor-pointer shadow-lg">
-                <span className="text-white text-xs font-bold">t</span>
-              </div>
-              <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg">
-                <span className="text-white text-xs font-bold">i</span>
-              </div>
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="flex space-x-3">
+              <button className="w-7 h-7 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all duration-200 text-xs font-bold">
+                f
+              </button>
+              <button className="w-7 h-7 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all duration-200 text-xs font-bold">
+                t
+              </button>
+              <button className="w-7 h-7 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-all duration-200 text-xs font-bold">
+                i
+              </button>
             </div>
-            <div className="text-sm flex items-center space-x-2">
+            <div className="text-sm flex items-center space-x-3">
               <span className="font-medium">KSh 0.00</span>
-              <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold shadow-lg">0</span>
+              <span className="bg-white text-black px-3 py-1 rounded-full text-xs font-bold">0</span>
             </div>
           </div>
         </div>
@@ -174,16 +174,17 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-full flex items-center justify-center relative shadow-xl hover:shadow-2xl transition-shadow duration-300">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 font-bold text-lg">KF</span>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg"></div>
+          <div className="flex items-center space-x-6">
+            <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center relative shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+              <img 
+                src="/images/icon/Karis.jpg" 
+                alt="KarisFits Icon" 
+                className="w-16 h-16 object-cover rounded-md"
+              />
             </div>
-            <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">KarisFits</h1>
-              <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">THRIFT</p>
+            <div className="flex flex-col">
+              <h1 className="text-5xl font-black text-black tracking-tight">KarisFits</h1>
+              {/* <p className="text-sm text-gray-600 uppercase tracking-widest font-semibold">KF</p> */}
             </div>
           </div>
 
@@ -195,9 +196,9 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 transition-all duration-200 bg-gray-50 hover:bg-white shadow-sm"
+                className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 focus:border-black transition-all duration-200 bg-gray-50 hover:bg-white shadow-sm"
               />
-              <button className="absolute right-2 top-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white p-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
+              <button className="absolute right-2 top-2 bg-black hover:bg-gray-800 text-white p-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
                 <Search className="h-4 w-4" />
               </button>
             </div>
@@ -219,7 +220,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
             >
               <ShoppingCart className="h-5 w-5" />
               {cartItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-lg">
+                <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
                   {cartItems}
                 </span>
               )}
@@ -228,7 +229,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden flex items-center justify-center w-10 h-10 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all duration-200"
+              className="md:hidden flex items-center justify-center w-10 h-10 text-gray-600 hover:text-black hover:bg-gray-50 rounded-full transition-all duration-200"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -243,9 +244,9 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 transition-all duration-200 bg-gray-50 hover:bg-white shadow-sm"
+              className="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 focus:border-black transition-all duration-200 bg-gray-50 hover:bg-white shadow-sm"
             />
-            <button className="absolute right-2 top-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white p-2 rounded-lg transition-all duration-200 shadow-lg">
+            <button className="absolute right-2 top-2 bg-black hover:bg-gray-800 text-white p-2 rounded-lg transition-all duration-200 shadow-lg">
               <Search className="h-4 w-4" />
             </button>
           </div>
@@ -253,7 +254,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
       </div>
 
       {/* Main Navigation */}
-      <nav className="bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 shadow-lg">
+      <nav className="bg-black shadow-2xl">
         <div className="max-w-7xl mx-auto px-4">
           {/* Desktop Navigation */}
           <div className="hidden lg:flex">
@@ -264,18 +265,18 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
                 onMouseEnter={() => item.hasDropdown && handleMouseEnter(item.name)}
                 onMouseLeave={handleMouseLeave}
               >
-                <button className="flex items-center space-x-1 px-6 py-4 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-200 text-sm font-medium backdrop-blur-sm">
+                <button className="flex items-center space-x-1 px-6 py-4 text-white hover:bg-gray-800 transition-all duration-200 text-sm font-medium uppercase tracking-wide">
                   <span>{item.name}</span>
                   {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
                 </button>
 
                 {/* Dropdown Menu */}
                 {item.hasDropdown && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 bg-white shadow-2xl border border-gray-100 min-w-52 z-50 rounded-lg overflow-hidden">
+                  <div className="absolute top-full left-0 bg-white shadow-2xl border border-gray-100 min-w-52 z-50 rounded-none overflow-hidden">
                     {item.dropdownItems?.map((dropdownItem) => (
                       <button
                         key={dropdownItem}
-                        className="block w-full text-left px-6 py-4 text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-600 transition-all duration-200 text-sm border-b border-gray-50 last:border-b-0"
+                        className="block w-full text-left px-6 py-4 text-gray-800 hover:bg-black hover:text-white transition-all duration-200 text-sm border-b border-gray-100 last:border-b-0 uppercase tracking-wide font-medium"
                       >
                         {dropdownItem}
                       </button>
@@ -291,7 +292,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
             <div className="lg:hidden py-4 space-y-2">
               {navigationItems.map((item) => (
                 <div key={item.name}>
-                  <button className="block w-full text-left text-white hover:bg-white hover:bg-opacity-20 transition-all duration-200 text-sm font-medium py-3 px-4 rounded-lg">
+                  <button className="block w-full text-left text-white hover:bg-gray-800 transition-all duration-200 text-sm font-medium py-3 px-4 rounded-none uppercase tracking-wide">
                     {item.name}
                   </button>
                   {item.hasDropdown && (
@@ -299,7 +300,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
                       {item.dropdownItems?.map((dropdownItem) => (
                         <button
                           key={dropdownItem}
-                          className="block w-full text-left text-indigo-100 hover:text-white hover:bg-white hover:bg-opacity-10 transition-all duration-200 text-xs py-2 px-4 rounded"
+                          className="block w-full text-left text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-200 text-xs py-2 px-4 rounded-none uppercase tracking-wide"
                         >
                           {dropdownItem}
                         </button>
@@ -314,13 +315,13 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
       </nav>
 
       {/* Secondary Navigation */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+      <div className="bg-gray-100 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="hidden md:flex space-x-8 py-4">
             {secondaryItems.map((item) => (
               <button
                 key={item}
-                className="text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-200 text-sm font-medium px-3 py-2 rounded-lg"
+                className="text-gray-800 hover:text-black hover:bg-white transition-all duration-200 text-sm font-medium px-3 py-2 rounded-none uppercase tracking-wide"
               >
                 {item}
               </button>
