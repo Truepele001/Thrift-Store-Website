@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, ShoppingCart, User, Menu, X, Heart, ChevronDown, Phone } from 'lucide-react';
+import UserLogin from './auth/UserLogin';
+import UserSignup from './auth/UserSignup';
+import UserProfile from './auth/UserProfile';
 
 interface HeaderProps {
   cartItems: number;
@@ -10,6 +13,9 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+  const [currentUser, setCurrentUser] = useState<any>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = (dropdown: string) => {
@@ -166,6 +172,12 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
               <span className="font-medium">KSh 0.00</span>
               <span className="bg-white text-black px-3 py-1 rounded-full text-xs font-bold">0</span>
             </div>
+            <a 
+              href="#admin" 
+              className="text-xs font-medium text-gray-300 hover:text-white transition-colors px-3 py-1 border border-gray-600 rounded-full hover:border-white"
+            >
+              ADMIN
+            </a>
           </div>
         </div>
       </div>
@@ -210,9 +222,17 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
               <Heart className="h-5 w-5" />
             </button>
 
-            <button className="flex items-center justify-center w-10 h-10 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all duration-200">
-              <User className="h-5 w-5" />
-            </button>
+            {/* User Authentication */}
+            {currentUser ? (
+              <UserProfile user={currentUser} onLogout={() => setCurrentUser(null)} />
+            ) : (
+              <button 
+                onClick={() => setShowLogin(true)}
+                className="flex items-center justify-center w-10 h-10 text-gray-600 hover:text-black hover:bg-gray-50 rounded-full transition-all duration-200"
+              >
+                <User className="h-5 w-5" />
+              </button>
+            )}
 
             <button
               onClick={onCartClick}
@@ -326,9 +346,50 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
                 {item}
               </button>
             ))}
+            
+            {/* Auth Buttons in Secondary Nav */}
+            {!currentUser && (
+              <div className="flex items-center space-x-4 ml-8">
+                <button
+                  onClick={() => setShowLogin(true)}
+                  className="text-gray-800 hover:text-black transition-all duration-200 text-sm font-medium px-4 py-2 border border-gray-300 rounded-lg hover:border-black"
+                >
+                  LOGIN
+                </button>
+                <button
+                  onClick={() => setShowSignup(true)}
+                  className="bg-black text-white hover:bg-gray-800 transition-all duration-200 text-sm font-medium px-4 py-2 rounded-lg"
+                >
+                  SIGN UP
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Authentication Modals */}
+      {showLogin && (
+        <UserLogin
+          onClose={() => setShowLogin(false)}
+          onLogin={(user) => setCurrentUser(user)}
+          onSwitchToSignup={() => {
+            setShowLogin(false);
+            setShowSignup(true);
+          }}
+        />
+      )}
+
+      {showSignup && (
+        <UserSignup
+          onClose={() => setShowSignup(false)}
+          onSignup={(user) => setCurrentUser(user)}
+          onSwitchToLogin={() => {
+            setShowSignup(false);
+            setShowLogin(true);
+          }}
+        />
+      )}
     </header>
   );
 };

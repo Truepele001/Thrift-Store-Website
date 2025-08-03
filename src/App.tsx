@@ -6,6 +6,7 @@ import ProductGrid from './components/ProductGrid';
 import Features from './components/Features';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
+import AdminApp from './components/admin/AdminApp';
 
 // Sample product data
 const sampleProducts = [
@@ -104,6 +105,24 @@ function App() {
   const [products, setProducts] = useState(sampleProducts);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
+
+  // Check URL for admin route
+  React.useEffect(() => {
+    const checkAdminRoute = () => {
+      if (window.location.hash === '#admin' || window.location.pathname === '/admin') {
+        setShowAdmin(true);
+      }
+    };
+    checkAdminRoute();
+    window.addEventListener('hashchange', checkAdminRoute);
+    return () => window.removeEventListener('hashchange', checkAdminRoute);
+  }, []);
+
+  // If admin route, show admin interface
+  if (showAdmin) {
+    return <AdminApp />;
+  }
 
   const handleAddToCart = (product: any) => {
     setCartItems(prevItems => {
