@@ -2,7 +2,7 @@ import React from 'react';
 import { X, Plus, Minus, Trash2 } from 'lucide-react';
 
 interface CartItem {
-  id: number;
+  id: string;
   name: string;
   price: number;
   image: string;
@@ -14,16 +14,23 @@ interface CartProps {
   isOpen: boolean;
   onClose: () => void;
   items: CartItem[];
-  onUpdateQuantity: (id: number, quantity: number) => void;
-  onRemoveItem: (id: number) => void;
+  onUpdateQuantity: (id: string, quantity: number) => void;
+  onRemoveItem: (id: string) => void;
+  onCheckout?: () => void;
 }
 
-const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem }) => {
+const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem, onCheckout }) => {
   const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const formatPrice = (price: number) => {
     return `KSh ${price.toLocaleString()}`;
+  };
+
+  const handleCheckout = () => {
+    if (onCheckout) {
+      onCheckout();
+    }
   };
 
   if (!isOpen) return null;
@@ -126,8 +133,11 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, onUpdateQuantity, o
                 </span>
               </div>
               
-              <div className="space-y-3">
-                <button className="w-full bg-black hover:bg-gray-800 text-white py-4 rounded-xl font-bold transition-all duration-300 uppercase tracking-wide">
+              <div className="space-y-4">
+                <button 
+                  onClick={handleCheckout}
+                  className="w-full bg-black hover:bg-gray-800 text-white py-4 rounded-xl font-bold transition-all duration-300 uppercase tracking-wide"
+                >
                   Proceed to Checkout
                 </button>
                 <button

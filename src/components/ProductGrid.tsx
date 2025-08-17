@@ -1,27 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart, ShoppingCart, Eye } from 'lucide-react';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  image: string;
-  category: string;
-  condition: string;
-  isLiked?: boolean;
-}
+import { fetchProducts } from '../api';
+import { Product, FrontendProduct } from '../types';
 
 interface ProductGridProps {
-  products: Product[];
-  onAddToCart: (product: Product) => void;
-  onToggleWishlist: (productId: number) => void;
+  onAddToCart: (product: any) => void;
+  onToggleWishlist: (productId: string) => void;
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, onToggleWishlist }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onToggleWishlist }) => {
+  const [products, setProducts] = useState<FrontendProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const data = await fetchProducts();
+        // Convert backend products to frontend format
+        const convertedProducts = data.map((product: Product) => ({
+          id: product._id,
+          name: product.name,
+          price: product.price,
+          originalPrice: Math.floor(product.price * 1.5), // Simulate original price
+          image: product.imageUrl,
+          category: product.category,
+          condition: 'Good', // Default condition
+          isLiked: false,
+        }));
+        setProducts(convertedProducts);
+      } catch (err) {
+        setError('Failed to fetch products');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getProducts();
+  }, []);
+
   const formatPrice = (price: number) => {
     return `KSh ${price.toLocaleString()}`;
   };
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <div className="text-xl">Loading products...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <div className="text-xl text-red-600">{error}</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 bg-gray-50">
