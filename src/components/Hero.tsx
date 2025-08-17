@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="text-7xl md:text-8xl font-black leading-none tracking-tight">
-              Thrift Smart,
+              Shop Smart,
               <span className="block text-white/80">Live Better</span>
             </h2>
             <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
