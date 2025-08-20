@@ -31,9 +31,14 @@ const Footer: React.FC = () => {
               <button className="w-10 h-10 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white hover:text-black transition-all duration-300">
                 <Facebook className="h-5 w-5" />
               </button>
-              <button className="w-10 h-10 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white hover:text-black transition-all duration-300">
+              <a 
+                href="https://www.instagram.com/karis_fits_ke?igsh=Nm10ZzdnMGxuOWZt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white hover:text-black transition-all duration-300"
+              >
                 <Instagram className="h-5 w-5" />
-              </button>
+              </a>
               <button className="w-10 h-10 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white hover:text-black transition-all duration-300">
                 <Twitter className="h-5 w-5" />
               </button>
