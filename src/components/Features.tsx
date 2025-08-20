@@ -11,16 +11,16 @@ const Features: React.FC = () => {
     {
       icon: Shield,
       title: "Quality Checked",
-      description: "All thrift items are cleaned, inspected and quality graded"
+      description: "All manufactured items are cleaned, inspected and quality graded"
     },
     {
       icon: RefreshCw,
-      title: "Thrift Guarantee",
+      title: "Quality Guarantee",
       description: "7-day exchange policy if item doesn't fit or meet expectations"
     },
     {
       icon: Headphones,
-      title: "Thrift Help",
+      title: "Clothes Help",
       description: "Get help finding the perfect clothes items via WhatsApp"
     },
     {

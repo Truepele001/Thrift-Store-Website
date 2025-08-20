@@ -9,7 +9,7 @@ const sampleProducts = [
     name: "Pre-loved Leather Jacket - Classic Brown",
     description: "A timeless brown leather jacket in excellent condition. Perfect for both casual and semi-formal occasions.",
     price: 1500,
-    category: "Men's Thrift",
+    category: "Men's Clothes",
     imageUrl: "https://images.pexels.com/photos/1040945/pexels-photo-1040945.jpeg?auto=compress&cs=tinysrgb&w=400",
     created_at: new Date().toISOString()
   },
@@ -18,13 +18,13 @@ const sampleProducts = [
     name: "Second-hand Floral Maxi Dress",
     description: "Beautiful floral pattern maxi dress, perfect for summer events. Gently used with vibrant colors.",
     price: 800,
-    category: "Women's Thrift",
+    category: "Women's Clothes",
     imageUrl: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=400",
     created_at: new Date().toISOString()
   },
   {
     id: '3',
-    name: "Thrift Designer Handbag - Genuine Leather",
+    name: "Shop Designer Handbag - Genuine Leather",
     description: "Authentic designer handbag in excellent condition. Features multiple compartments and genuine leather construction.",
     price: 2200,
     category: "Bags & Accessories",
@@ -33,10 +33,10 @@ const sampleProducts = [
   },
   {
     id: '4',
-    name: "Thrift High-Waisted Denim Jeans",
+    name: "Shop High-Waisted Denim Jeans",
     description: "Classic high-waisted denim jeans in great condition. Perfect fit for casual everyday wear.",
     price: 600,
-    category: "Women's Thrift",
+    category: "Women's Clothes",
     imageUrl: "https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=400",
     created_at: new Date().toISOString()
   }
