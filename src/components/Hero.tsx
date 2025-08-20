@@ -21,17 +21,17 @@ const Hero: React.FC = () => {
               <span className="block text-white/80">Live Better</span>
             </h2>
             <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
-              Kenya's trusted thrift store chain. Discover amazing second-hand treasures at 
+              Kenya's trusted online cloth shop. Discover amazing new clothes treasures at 
               unbeatable prices while giving clothes a second life and protecting our planet.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-white text-black px-10 py-4 rounded-none font-bold hover:bg-gray-200 transition-all duration-300 flex items-center justify-center space-x-2 text-lg uppercase tracking-wide">
-                <span>Start Thrifting</span>
+                <span>Start Shopping</span>
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button className="border-2 border-white bg-transparent text-white px-10 py-4 rounded-none font-bold hover:bg-white hover:text-black transition-all duration-300 text-lg uppercase tracking-wide">
-                Why Thrift?
+                Why Shop brand new clothes?
               </button>
             </div>
 
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-4xl font-black">10K+</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">Happy Thrifters</div>
+                <div className="text-sm text-gray-400 uppercase tracking-wide">Happy Shoppers</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-4">
@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-4xl font-black">65K+</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">Items Thrifted</div>
+                <div className="text-sm text-gray-400 uppercase tracking-wide">Items Shopped</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-4">
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-4xl font-black">7</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wide">Thrift Stores</div>
+                <div className="text-sm text-gray-400 uppercase tracking-wide">Physical Stores</div>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
                 className="w-full h-96 object-cover rounded-none grayscale contrast-125"
               />
               <div className="absolute -bottom-8 -left-8 bg-white text-black p-8 rounded-none">
-                <div className="text-sm font-bold uppercase tracking-wide">Fresh Stock</div>
+                <div className="text-sm font-bold uppercase tracking-wide">New Clothes</div>
                 <div className="text-4xl font-black">Daily</div>
               </div>
             </div>
