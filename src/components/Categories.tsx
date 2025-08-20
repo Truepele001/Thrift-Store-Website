@@ -39,9 +39,9 @@ const Categories: React.FC = () => {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-6xl font-black text-black mb-8 tracking-tight uppercase">Thrift by Category</h2>
+          <h2 className="text-6xl font-black text-black mb-8 tracking-tight uppercase">Shop by Category</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Find amazing second-hand deals in every category with our curated collections
+            Find amazing new clothes deals in every category with our curated collections
           </p>
         </div>
 

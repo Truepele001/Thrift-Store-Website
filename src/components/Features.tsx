@@ -21,17 +21,17 @@ const Features: React.FC = () => {
     {
       icon: Headphones,
       title: "Thrift Help",
-      description: "Get help finding the perfect thrift items via WhatsApp"
+      description: "Get help finding the perfect clothes items via WhatsApp"
     },
     {
       icon: Award,
       title: "Best Prices",
-      description: "Guaranteed lowest prices on quality second-hand items"
+      description: "Guaranteed lowest prices on quality Brand New clothes"
     },
     {
       icon: Leaf,
       title: "Planet Friendly",
-      description: "Every thrift purchase saves clothes from landfills"
+      description: "Every cloth purchase saves clothes from landfills"
     }
   ];
 
@@ -41,7 +41,7 @@ const Features: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-black mb-6 uppercase tracking-tight">Why Choose KarisFits?</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Kenya's most trusted thrift store with the best prices and quality second-hand items
+            Kenya's most trusted online cloth store with the best prices and quality new clothes
           </p>
         </div>
 
