@@ -68,7 +68,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onToggleWishlist
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-black mb-6 uppercase tracking-tight">Today's Thrift Finds</h2>
+          <h2 className="text-5xl font-bold text-black mb-6 uppercase tracking-tight">Today's clothes Finds</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Fresh brand new arrivals at incredible prices - these won't last long!
           </p>
@@ -165,7 +165,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onToggleWishlist
 
         <div className="text-center mt-16">
           <button className="bg-white text-black border-2 border-black hover:bg-black hover:text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 uppercase tracking-wider">
-            Browse All Thrift Items
+            Browse All Items
           </button>
         </div>
       </div>
