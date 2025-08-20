@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed text-sm">
-              Kenya's favorite thrift store chain, making quality second-hand fashion 
-              affordable for everyone. Thrift smart, save money, help the planet.
+              Kenya's favorite clothes store chain, making quality Brand New clothes
+              affordable for everyone. Shop smart, save money, help the planet.
             </p>
             <div className="flex space-x-4">
               <button className="w-10 h-10 bg-gray-800 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white hover:text-black transition-all duration-300">
@@ -45,10 +45,10 @@ const Footer: React.FC = () => {
             <h4 className="text-xl font-bold mb-6 text-white uppercase tracking-wide">Quick Links</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">Why Thrift?</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">Why shop with us?</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">Store Locations</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">Sell Your Clothes</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">Thrift Guide</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">Shop Guide</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white hover:pl-2 transition-all duration-200 text-sm">Size Guide</a></li>
             </ul>
           </div>
