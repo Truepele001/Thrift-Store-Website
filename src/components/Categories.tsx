@@ -4,31 +4,31 @@ import { ArrowRight } from 'lucide-react';
 const Categories: React.FC = () => {
   const categories = [
     {
-      name: "Women's Thrift",
+      name: "Women's Clothes",
       image: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=400",
       itemCount: "2,500+ pre-loved items",
       color: "from-black/80 to-black/60"
     },
     {
-      name: "Men's Thrift",
+      name: "Men's Clothes",
       image: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400",
       itemCount: "1,800+ second-hand finds",
       color: "from-black/70 to-black/50"
     },
     {
-      name: "Kids Thrift",
+      name: "Kids Clothes",
       image: "https://images.pexels.com/photos/1620760/pexels-photo-1620760.jpeg?auto=compress&cs=tinysrgb&w=400",
       itemCount: "1,200+ gently used",
       color: "from-black/80 to-black/60"
     },
     {
-      name: "Thrift Accessories",
+      name: "Other Accessories",
       image: "https://images.pexels.com/photos/1447264/pexels-photo-1447264.jpeg?auto=compress&cs=tinysrgb&w=400",
       itemCount: "800+ unique pieces",
       color: "from-black/70 to-black/50"
     },
     {
-      name: "Home Thrift",
+      name: "Home Stuff",
       image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=400",
       itemCount: "600+ household items",
       color: "from-black/80 to-black/60"
