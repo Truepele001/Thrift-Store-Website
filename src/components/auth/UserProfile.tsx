@@ -3,7 +3,7 @@ import { User, Settings, ShoppingBag, Heart, LogOut, ChevronDown } from 'lucide-
 
 interface UserProfileProps {
   user: {
-    id: number;
+    id: string;
     name: string;
     email: string;
     avatar?: string | null;
