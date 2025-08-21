@@ -96,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
         'Men\'s Underwear',
         'Women\'s Underwear',
         'Boxer Shorts',
-        'Thrift Jeans',
+        'Jeans',
         'Casual Pants',
         'Formal Trousers',
         'Shorts & Bermudas'
@@ -112,7 +112,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
       href: '#',
       hasDropdown: true,
       dropdownItems: [
-        'Thrift Shirts',
+        'Shop Shirts',
         'T-Shirts & Polos',
         'Jackets & Coats',
         'Sweaters & Hoodies',
@@ -126,7 +126,7 @@ const Header: React.FC<HeaderProps> = ({ cartItems, onCartClick }) => {
       href: '#',
       hasDropdown: true,
       dropdownItems: [
-        'Thrift Dresses',
+        'Shop Dresses',
         'Blouses & Tops',
         'Skirts & Pants',
         'Jackets & Blazers',

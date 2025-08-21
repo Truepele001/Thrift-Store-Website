@@ -80,8 +80,8 @@ const Footer: React.FC = () => {
                   <MapPin className="h-4 w-4 text-black" />
                 </div>
                 <div>
-                  <p className="text-gray-300 text-sm">Westlands, Nairobi</p>
-                  <p className="text-gray-300 text-sm">Kenya</p>
+                  <p className="text-gray-300 text-sm">Next to Kenya builders Airport Northroad,</p>
+                  <p className="text-gray-300 text-sm">Nairobi, Kenya</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
