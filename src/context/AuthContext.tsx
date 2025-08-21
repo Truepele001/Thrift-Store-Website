@@ -149,23 +149,90 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       console.log('Starting registration with:', { name, email, phone });
       
-      // Create demo account for any registration attempt when Supabase isn't working properly
-      const demoUser = {
-        id: `demo_${Date.now()}`,
-        name: name,
-        email: email,
-        avatar: null
-      };
-      
-      localStorage.setItem('demo_user', JSON.stringify(demoUser));
-      setUser(demoUser);
-      
-      return { 
-        success: true, 
-        error: 'Demo account created! Your data will not be saved permanently.' 
-      };
+      // Check for demo email specifically
+      if (email.trim().toLowerCase() === 'demo@karisfits.com') {
+        const demoUser = {
+          id: 'demo_user',
+          name: 'Demo User',
+          email: 'demo@karisfits.com',
+          avatar: null
+        };
+        
+        localStorage.setItem('demo_user', JSON.stringify(demoUser));
+        setUser(demoUser);
+        
+        return { 
+          success: true, 
+          error: 'Demo account created! Your data will not be saved permanently.' 
+        };
+      }
+
+      // Create real Supabase user account
+      const { data, error } = await supabase.auth.signUp({
+        email: email.trim(),
+        password: password.trim(),
+        options: {
+          data: {
+            full_name: name,
+            phone: phone || null,
+          }
+        }
+      });
+
+      if (error) {
+        console.error('Supabase registration error:', error);
+        
+        // If Supabase is not configured, fall back to demo mode
+        if (error.message === 'Supabase not configured' || error.message === 'Failed to create Supabase client') {
+          const demoUser = {
+            id: `demo_${Date.now()}`,
+            name: name,
+            email: email,
+            avatar: null
+          };
+          
+          localStorage.setItem('demo_user', JSON.stringify(demoUser));
+          setUser(demoUser);
+          
+          return { 
+            success: true, 
+            error: 'Demo account created! Supabase not configured. Your data will not be saved permanently.' 
+          };
+        }
+        
+        return { success: false, error: error.message };
+      }
+
+      // Check if user needs to confirm email
+      if (data.user && !data.session) {
+        return { 
+          success: true, 
+          error: 'Registration successful! Please check your email to confirm your account.' 
+        };
+      }
+
+      return { success: true };
     } catch (err: any) {
       console.error('Registration error:', err);
+      
+      // Handle network errors - fall back to demo mode
+      if (err.message?.includes('fetch') || err.name === 'TypeError') {
+        const demoUser = {
+          id: `demo_${Date.now()}`,
+          name: name,
+          email: email,
+          avatar: null
+        };
+        
+        localStorage.setItem('demo_user', JSON.stringify(demoUser));
+        setUser(demoUser);
+        
+        return { 
+          success: true, 
+          error: 'Demo account created! Network error prevented real registration.' 
+        };
+      }
+      
       return { success: false, error: 'An error occurred during signup.' };
     }
   };
