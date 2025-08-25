@@ -167,7 +167,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         };
       }
 
-      // Create real Supabase user account
+      // Try Supabase registration with better error handling
+      console.log('Attempting Supabase registration...');
+      
       const { data, error } = await supabase.auth.signUp({
         email: email.trim(),
         password: password.trim(),
@@ -182,10 +184,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (error) {
         console.error('Supabase registration error:', error);
         
-        // If Supabase is not configured, fall back to demo mode
-        if (error.message === 'Supabase not configured' || error.message === 'Failed to create Supabase client') {
+        // Handle specific network/DNS errors (your local computer can't reach Supabase)
+        if (error.message?.includes('fetch') || 
+            error.message?.includes('Failed to fetch') ||
+            error.message?.includes('NetworkError') ||
+            error.message?.includes('ENOTFOUND') ||
+            error.message?.includes('getaddrinfo') ||
+            error.name === 'AuthRetryableFetchError' ||
+            error.status === 0) {
+          
+          // Create local account but inform user about network issue
           const demoUser = {
-            id: `demo_${Date.now()}`,
+            id: `local_${Date.now()}`,
             name: name,
             email: email,
             avatar: null
@@ -196,29 +206,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           
           return { 
             success: true, 
-            error: 'Demo account created! Supabase not configured. Your data will not be saved permanently.' 
+            error: '⚠️ Local network/firewall blocking Supabase. Account created locally. Try disabling Windows Firewall/antivirus temporarily.' 
           };
         }
         
         return { success: false, error: error.message };
       }
 
-      // Check if user needs to confirm email
+      // Success - check if email confirmation is needed
       if (data.user && !data.session) {
         return { 
           success: true, 
-          error: 'Registration successful! Please check your email to confirm your account.' 
+          error: '✅ Account created! Please check your email to confirm your account.' 
         };
       }
 
       return { success: true };
     } catch (err: any) {
-      console.error('Registration error:', err);
+      console.error('Registration catch error:', err);
       
-      // Handle network errors - fall back to demo mode
-      if (err.message?.includes('fetch') || err.name === 'TypeError') {
+      // Handle any network errors with local fallback
+      if (err.message?.includes('fetch') || 
+          err.name === 'TypeError' ||
+          err.message?.includes('ENOTFOUND')) {
+        
         const demoUser = {
-          id: `demo_${Date.now()}`,
+          id: `local_${Date.now()}`,
           name: name,
           email: email,
           avatar: null
@@ -229,7 +242,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         
         return { 
           success: true, 
-          error: 'Demo account created! Network error prevented real registration.' 
+          error: '⚠️ Network error. Account created locally. Check firewall/antivirus settings.' 
         };
       }
       
