@@ -46,7 +46,13 @@ const sampleProducts = [
 router.get('/', async (req, res) => {
   try {
     // Check if Supabase is properly configured
-    if (!process.env.SUPABASE_URL || process.env.SUPABASE_URL === 'https://your-project-id.supabase.co') {
+    const { supabaseAdmin } = require('../config/supabase');
+    
+    // More robust check for Supabase configuration
+    if (!process.env.SUPABASE_URL || 
+        !process.env.SUPABASE_SERVICE_ROLE_KEY ||
+        process.env.SUPABASE_URL === 'https://your-project-id.supabase.co' ||
+        process.env.SUPABASE_URL.includes('your-project-id')) {
       console.log('⚠️  Supabase not configured, returning sample data');
       return res.json({
         products: sampleProducts,
@@ -55,6 +61,8 @@ router.get('/', async (req, res) => {
         total: sampleProducts.length
       });
     }
+
+    console.log('✅ Supabase configured, fetching real data...');
 
     const { category, page = 1, limit = 12, search } = req.query;
     
