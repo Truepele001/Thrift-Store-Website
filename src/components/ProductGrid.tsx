@@ -16,6 +16,15 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onToggleWishlist
   useEffect(() => {
     const getProducts = async () => {
       try {
+        // Only try backend if API_BASE_URL is not localhost in production
+        const isProduction = window.location.hostname !== 'localhost';
+        const apiUrl = import.meta.env.VITE_API_BASE_URL;
+        
+        if (isProduction && (!apiUrl || apiUrl.includes('localhost'))) {
+          // Skip backend call in production if no proper API URL is set
+          throw new Error('No backend configured for production');
+        }
+        
         const data = await fetchProducts();
         // Handle the response format which has a 'products' property
         const productsList = data.products || [];
