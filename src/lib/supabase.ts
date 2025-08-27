@@ -3,6 +3,18 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+console.log('Environment check:', {
+  NODE_ENV: import.meta.env.MODE,
+  PROD: import.meta.env.PROD,
+  DEV: import.meta.env.DEV,
+  url: supabaseUrl,
+  urlType: typeof supabaseUrl,
+  urlLength: supabaseUrl?.length,
+  hasKey: !!supabaseAnonKey,
+  keyLength: supabaseAnonKey?.length,
+  allEnvKeys: Object.keys(import.meta.env)
+});
+
 console.log('Supabase config:', { url: supabaseUrl, key: supabaseAnonKey ? 'Present' : 'Missing' });
 
 // Check if environment variables are properly configured
