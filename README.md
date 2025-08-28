@@ -2,6 +2,8 @@
 
 A modern, full-stack e-commerce website for a thrift store chain in Kenya, featuring product management, user authentication, cart functionality, and IntaSend payment integration.
 
+<!-- Updated environment variables - trigger redeploy -->
+
 ## Features
 
 ### Frontend
