@@ -5,16 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:backend": "cd server && npm run dev",
-    "dev:both": "concurrently \"npm run dev:backend\" \"npm run dev\"",
-    "build": "npm run install-server && vite build",
-    "install-server": "cd server && npm install",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "node server/server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.55.0",
     "axios": "^1.11.0",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
