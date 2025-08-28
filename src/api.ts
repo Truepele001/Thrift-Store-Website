@@ -2,7 +2,30 @@ import axios from 'axios';
 import { Product } from './types';
 
 // Use environment variable for API URL, fallback to localhost for development
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+// If deployed on Vercel, use same domain for API calls
+const getAPIBaseURL = () => {
+  // If environment variable is set, use it
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  
+  // If in production and on vercel domain, use same domain
+  if (import.meta.env.PROD && window.location.hostname.includes('vercel.app')) {
+    return `${window.location.protocol}//${window.location.host}/api`;
+  }
+  
+  // Default to localhost for development
+  return 'http://localhost:5000/api';
+};
+
+const API_BASE_URL = getAPIBaseURL();
+
+console.log('API Configuration:', {
+  VITE_API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
+  API_BASE_URL,
+  hostname: window.location.hostname,
+  environment: import.meta.env.MODE
+});
 
 // Create axios instance with default config
 const api = axios.create({

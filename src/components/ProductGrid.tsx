@@ -16,16 +16,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onToggleWishlist
   useEffect(() => {
     const getProducts = async () => {
       try {
-        // Only try backend if API_BASE_URL is not localhost in production
-        const isProduction = window.location.hostname !== 'localhost';
-        const apiUrl = import.meta.env.VITE_API_BASE_URL;
-        
-        if (isProduction && (!apiUrl || apiUrl.includes('localhost'))) {
-          // Skip backend call in production if no proper API URL is set
-          throw new Error('No backend configured for production');
-        }
-        
+        console.log('Attempting to fetch products from backend...');
         const data = await fetchProducts();
+        console.log('Backend response:', data);
+        
         // Handle the response format which has a 'products' property
         const productsList = data.products || [];
         // Convert backend products to frontend format
@@ -40,8 +34,11 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onToggleWishlist
           isLiked: false,
         }));
         setProducts(convertedProducts);
+        console.log('Successfully loaded products from backend:', convertedProducts.length);
       } catch (err) {
-        console.error('Failed to fetch products from backend, using sample data:', err);
+        console.error('Failed to fetch products from backend:', err);
+        console.log('Falling back to sample data');
+        
         // Fallback to sample data if backend is not available
         const sampleProducts = [
           {
